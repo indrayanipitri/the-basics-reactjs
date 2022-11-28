@@ -66,17 +66,33 @@
         //     )
 
         //bable
-        const root = document.querySelector('#root')
+        // const root = document.querySelector('#root')
 
-        const element = (
-            <ul>
-                <li>Apple</li>
-                <li>Orange</li>
-                <li>Grape</li>
-            </ul>
-        )
+        // const element = (
+        //     <ul>
+        //         <li>Apple</li>
+        //         <li>Orange</li>
+        //         <li>Grape</li>
+        //     </ul>
+        // )
         /* bable => javascript compiler. kita bs nulis kode js versi terbaru, lalu bable akan compile kode tersebut menjadi kode js yg bisa diterima di semua browser.
         selain itu bable dapat juga mentransformasi kode js yang engga standar seperti jsx, menjadi kode js yg standar */
+
+        //more about jsx
+        const root = document.querySelector('#root')
+
+        function ngegas(text){
+            return text.toUpperCase();
+        }
+
+        const name = 'Dina'
+
+        const element = (
+            <div>
+                <h1>Hello {ngegas(name)} {new Date().toLocaleDateString()}</h1>
+                <img src="https://images.unsplash.com/photo-1669150740834-a7f067378ac7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"/>
+            </div>
+        );
 
     ReactDOM.render(element, root)
  
