@@ -79,20 +79,34 @@
         selain itu bable dapat juga mentransformasi kode js yang engga standar seperti jsx, menjadi kode js yg standar */
 
         //more about jsx
-        const root = document.querySelector('#root')
+        // const root = document.querySelector('#root')
 
-        function ngegas(text){
-            return text.toUpperCase();
+        // function ngegas(text){
+        //     return text.toUpperCase();
+        // }
+
+        // const name = 'Dina'
+
+        // const element = (
+        //     <div>
+        //         <h1>Hello {ngegas(name)} {new Date().toLocaleDateString()}</h1>
+        //         <img src="https://images.unsplash.com/photo-1669150740834-a7f067378ac7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"/>
+        //     </div>
+        // );
+
+        const root = document.querySelector('#root');
+
+        function Halo(props) {
+            return <p>Halo <b>{props.name}</b></p>
         }
 
-        const name = 'Dina'
-
         const element = (
-            <div>
-                <h1>Hello {ngegas(name)} {new Date().toLocaleDateString()}</h1>
-                <img src="https://images.unsplash.com/photo-1669150740834-a7f067378ac7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"/>
-            </div>
-        );
+            <>
+                <Halo name="Dina"/>
+                <Halo name="Pipit"/>
+                <Halo name="Nurul"/>
+            </>
+        )
 
     ReactDOM.render(element, root)
  
