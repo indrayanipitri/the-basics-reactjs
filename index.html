@@ -94,22 +94,38 @@
         //     </div>
         // );
 
+        //react component
+        // const root = document.querySelector('#root');
+
+        // function Halo(props) {
+        //     return <p>Halo <b>{props.name}</b></p>
+        // }
+
+        // const element = (
+        //     <>
+        //         <Halo name="Dina"/>
+        //         <Halo name="Pipit"/>
+        //         <Halo name="Nurul"/>
+        //     </>
+        // )
+
+        //rendering
         const root = document.querySelector('#root');
 
-        function Halo(props) {
-            return <p>Halo <b>{props.name}</b></p>
+        function tick() {
+            const element = (
+                <div>
+                    <h3>Jam Sekarang</h3>
+                    {new Date().toLocaleTimeString()}
+                </div>
+            )
+            ReactDOM.render(element, root)
         }
 
-        const element = (
-            <>
-                <Halo name="Dina"/>
-                <Halo name="Pipit"/>
-                <Halo name="Nurul"/>
-            </>
-        )
+        setInterval(function() {
+            tick();
+        }, 1000)
 
-    ReactDOM.render(element, root)
- 
      </script>
 </body>
 </html>
