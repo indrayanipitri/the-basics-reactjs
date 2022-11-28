@@ -18,8 +18,11 @@
      <!-- pakai CDN react -->
      <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
      <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- pakai CDN bable -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
  
-    <script>
+    <script type="text/babel">
 
         //  const rootJs = document.querySelector('#root-js')
         //  const element = document.createElement('h1')    //menghasilkan output node
@@ -52,16 +55,28 @@
         // })
 
         //nasted element
+        // const root = document.querySelector('#root')
+
+        // const element = React.createElement('ul', {
+        //     className: 'list'
+        //     },
+        //     React.createElement('li', null, "Apple"),
+        //     React.createElement('li',  null, "Orange"),
+        //     React.createElement('li',  null, "Grape")
+        //     )
+
+        //bable
         const root = document.querySelector('#root')
 
-        const element = React.createElement('ul', {
-            className: 'list'
-            },
-            React.createElement('li', null, "Apple"),
-            React.createElement('li',  null, "Orange"),
-            React.createElement('li',  null, "Grape")
-            )
-
+        const element = (
+            <ul>
+                <li>Apple</li>
+                <li>Orange</li>
+                <li>Grape</li>
+            </ul>
+        )
+        /* bable => javascript compiler. kita bs nulis kode js versi terbaru, lalu bable akan compile kode tersebut menjadi kode js yg bisa diterima di semua browser.
+        selain itu bable dapat juga mentransformasi kode js yang engga standar seperti jsx, menjadi kode js yg standar */
 
     ReactDOM.render(element, root)
  
