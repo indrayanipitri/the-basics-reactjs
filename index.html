@@ -7,6 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Hello from HTML!</h1>
+
+    <!-- cara buat lewat js -->
+    <div id="root"></div>
+
+    <script>
+        const root = document.querySelector('#root')
+        const element = document.createElement('h1')
+        element.textContent = "Hello from JS!"
+
+        root.appendChild(element)
+    </script>
 </body>
 </html>
