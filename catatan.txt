@@ -44,3 +44,14 @@ buka file package.json masukan kode berikut dalam scripts:
 
 jalanin index.html :
 yarn start
+
+lite server tidak ada hubungannya dengan babel.
+cara agar babel otomatis compile :
+edit file package.json bagian scripts menjadi:
+"build": "babel src --out-dir public -w",
+"serve": "lite-server --baseDir public",
+"start": "yarn build & yarn serve"
+
+**catatan: karena yarn start, di tmpt aku servenya tdk jln(hanya buildnya saja). aku panggil package concurrently. npm i concurrently --save-dev
+lalu start nya aku ganti jadi:
+"start": "concurrently --kill-others \"yarn build\" \"yarn serve\"" 

@@ -85,6 +85,7 @@ selain itu bable dapat juga mentransformasi kode js yang engga standar seperti j
 
 //rendering
 const root = document.querySelector('#root');
+console.log("yakin");
 function tick() {
   const element = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Jam Sekarang"), new Date().toLocaleTimeString());
   ReactDOM.render(element, root);

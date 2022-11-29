@@ -85,6 +85,7 @@
 
         //rendering
         const root = document.querySelector('#root');
+        console.log("yakin")
 
         function tick() {
             const element = (
