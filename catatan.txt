@@ -1,0 +1,46 @@
+node -v => liat versi node
+npm -v => liat versi npm
+npm install -g yarn => install yarn di global
+yarn -v => liat versi yarn
+yarn init -y => install package.json
+
+install babel :
+yarn add @babel/core @babel/cli @babel/preset-react
+
+babel/core -> internal api nya
+babel/cli -> buat ngecompile kode nya
+preset/react -> ngasih tau kalau kode kita itu kode react
+
+bikin proses compile nya dalam file package.json:
+"scripts": {
+  "build" : "babel src --out-dir public"
+}
+
+buat folder publik dan src.
+pindahin index.html ke folder public.
+buat file app.js dalam folder src.
+kode js dalam index html cut, lalu paste dalam file app.js dalam folder src
+
+utk ngasih tau preset yg kita pakai, buat config babel :
+bikin file dgn nama .babelrc
+masukan kode:
+{
+  "presets": ["@babel/preset-react"]
+}
+
+
+jalanin perintah build yg kita buat dlm scripts package.json utk menjalankan babel:
+yarn build
+
+file compile dalam folder src akan muncul dalam folder public, dgn nama file yang sama "app.js"
+
+lalu import file app.js ke dalam file index.html
+
+menjalankan file index.html menggunakan http server. install package lite-server:
+yarn add lite-server
+
+buka file package.json masukan kode berikut dalam scripts:
+"start": "lite-server --baseDir public"
+
+jalanin index.html :
+yarn start

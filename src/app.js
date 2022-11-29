@@ -1,30 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>belajar React</title>
-</head>
-<body>
-    <h1>Hello from HTML!</h1>
-
-     <!-- buat lewat js -->
-     <div id="root-js"></div>
-
-     <!-- buat lewat react -->
-     <div id="root"></div>
- 
-     <!-- pakai CDN react -->
-     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-
-    <!-- pakai CDN bable -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
- 
-    <script type="text/babel">
-
-        //  const rootJs = document.querySelector('#root-js')
+    //  const rootJs = document.querySelector('#root-js')
         //  const element = document.createElement('h1')    //menghasilkan output node
         //  element.textContent = "Hello from JS!"
         //  element.className = 'heading-1'
@@ -125,7 +99,3 @@
         setInterval(function() {
             tick();
         }, 1000)
-
-     </script>
-</body>
-</html>
