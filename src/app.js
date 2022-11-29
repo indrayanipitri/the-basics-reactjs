@@ -84,19 +84,42 @@
         // )
 
         //rendering
+        // const root = document.querySelector('#root');
+        // console.log("yakin")
+
+        // function tick() {
+        //     const element = (
+        //         <div>
+        //             <h3>Jam Sekarang</h3>
+        //             {new Date().toLocaleTimeString()}
+        //         </div>
+        //     )
+        //     ReactDOM.render(element, root)
+        // }
+
+        // setInterval(function() {
+        //     tick();
+        // }, 1000)
+
+        //inline style
+        // const root = document.querySelector('#root');
+
+        // const element = (
+        //     <div style = {
+        //         { 
+        //             width: 200,
+        //             height: 200,
+        //             backgroundColor: 'blue'
+        //         }
+        //     }>
+        //     </div>
+        // )
+
+        //external style
         const root = document.querySelector('#root');
-        console.log("yakin")
 
-        function tick() {
-            const element = (
-                <div>
-                    <h3>Jam Sekarang</h3>
-                    {new Date().toLocaleTimeString()}
-                </div>
-            )
-            ReactDOM.render(element, root)
-        }
+        const element = (
+            <div className="box"></div>
+        )
 
-        setInterval(function() {
-            tick();
-        }, 1000)
+        ReactDOM.render(element, root)

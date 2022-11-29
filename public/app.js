@@ -84,12 +84,40 @@ selain itu bable dapat juga mentransformasi kode js yang engga standar seperti j
 // )
 
 //rendering
+// const root = document.querySelector('#root');
+// console.log("yakin")
+
+// function tick() {
+//     const element = (
+//         <div>
+//             <h3>Jam Sekarang</h3>
+//             {new Date().toLocaleTimeString()}
+//         </div>
+//     )
+//     ReactDOM.render(element, root)
+// }
+
+// setInterval(function() {
+//     tick();
+// }, 1000)
+
+//inline style
+// const root = document.querySelector('#root');
+
+// const element = (
+//     <div style = {
+//         { 
+//             width: 200,
+//             height: 200,
+//             backgroundColor: 'blue'
+//         }
+//     }>
+//     </div>
+// )
+
+//external style
 const root = document.querySelector('#root');
-console.log("yakin");
-function tick() {
-  const element = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Jam Sekarang"), new Date().toLocaleTimeString());
-  ReactDOM.render(element, root);
-}
-setInterval(function () {
-  tick();
-}, 1000);
+const element = /*#__PURE__*/React.createElement("div", {
+  className: "box"
+});
+ReactDOM.render(element, root);
