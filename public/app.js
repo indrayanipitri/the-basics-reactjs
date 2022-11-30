@@ -123,11 +123,30 @@ selain itu bable dapat juga mentransformasi kode js yang engga standar seperti j
 // )
 
 //Even Handling
+// const root = document.querySelector('#root');
+
+// function clickDong(text){
+//     alert(text)
+// }
+// const element = <button onClick={clickDong.bind(this, "Maaciw Yawh")} >Click Me</button>
+
+//React State
 const root = document.querySelector('#root');
-function clickDong(text) {
-  alert(text);
+function App() {
+  // const state = React.useState(0);
+  const [count, setCount] = React.useState(0);
+
+  // const count = state[0];
+  // const setCount = state[1];
+
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
+    onClick: function () {
+      setCount(count - 1);
+    }
+  }, " - "), /*#__PURE__*/React.createElement("span", null, " ", count, " "), /*#__PURE__*/React.createElement("button", {
+    onClick: function () {
+      setCount(count + 1);
+    }
+  }, " + "));
 }
-const element = /*#__PURE__*/React.createElement("button", {
-  onClick: clickDong.bind(this, "Maaciw Yawh")
-}, "Click Me");
-ReactDOM.render(element, root);
+ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);

@@ -123,11 +123,34 @@
         // )
 
         //Even Handling
+        // const root = document.querySelector('#root');
+
+        // function clickDong(text){
+        //     alert(text)
+        // }
+        // const element = <button onClick={clickDong.bind(this, "Maaciw Yawh")} >Click Me</button>
+
+        //React State
         const root = document.querySelector('#root');
 
-        function clickDong(text){
-            alert(text)
-        }
-        const element = <button onClick={clickDong.bind(this, "Maaciw Yawh")} >Click Me</button>
+        function App() {
+            // const state = React.useState(0);
+            const [count, setCount] = React.useState(0);
 
-        ReactDOM.render(element, root)
+            // const count = state[0];
+            // const setCount = state[1];
+
+            return (
+                <>
+                    <button onClick={function() {
+                        setCount(count - 1);
+                    }}> - </button>
+                    <span> {count} </span>
+                    <button onClick={function() {
+                        setCount(count + 1);
+                    }}> + </button>
+                </>
+            )
+        }
+
+        ReactDOM.render(<App />, root)
