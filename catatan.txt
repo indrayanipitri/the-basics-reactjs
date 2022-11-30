@@ -55,3 +55,6 @@ edit file package.json bagian scripts menjadi:
 **catatan: karena yarn start, di tmpt aku servenya tdk jln(hanya buildnya saja). aku panggil package concurrently. npm i concurrently --save-dev
 lalu start nya aku ganti jadi:
 "start": "concurrently --kill-others \"yarn build\" \"yarn serve\"" 
+
+
+react state => data yang ada didalam react compnent dan data itu terisolasi. jd gak bs dipake dicomponent lainnya, cuma bs dipake di component itu saja. data tersebut bisa diubah. jd ketika state nya diubah, componet trsbt akan merender ulang
