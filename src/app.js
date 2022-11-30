@@ -116,10 +116,18 @@
         // )
 
         //external style
+        // const root = document.querySelector('#root');
+
+        // const element = (
+        //     <div className="box"></div>
+        // )
+
+        //Even Handling
         const root = document.querySelector('#root');
 
-        const element = (
-            <div className="box"></div>
-        )
+        function clickDong(text){
+            alert(text)
+        }
+        const element = <button onClick={clickDong.bind(this, "Maaciw Yawh")} >Click Me</button>
 
         ReactDOM.render(element, root)

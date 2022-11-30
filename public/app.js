@@ -116,8 +116,18 @@ selain itu bable dapat juga mentransformasi kode js yang engga standar seperti j
 // )
 
 //external style
+// const root = document.querySelector('#root');
+
+// const element = (
+//     <div className="box"></div>
+// )
+
+//Even Handling
 const root = document.querySelector('#root');
-const element = /*#__PURE__*/React.createElement("div", {
-  className: "box"
-});
+function clickDong(text) {
+  alert(text);
+}
+const element = /*#__PURE__*/React.createElement("button", {
+  onClick: clickDong.bind(this, "Maaciw Yawh")
+}, "Click Me");
 ReactDOM.render(element, root);
