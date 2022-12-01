@@ -58,3 +58,21 @@ lalu start nya aku ganti jadi:
 
 
 react state => data yang ada didalam react compnent dan data itu terisolasi. jd gak bs dipake dicomponent lainnya, cuma bs dipake di component itu saja. data tersebut bisa diubah. jd ketika state nya diubah, componet trsbt akan merender ulang
+
+component lifecycle -> memungkinkan kita bisa mengeksekusi sebuah function dimana waktu eksekusinya itu pada saat component itu dirender.
+
+React.useEffect -> berguna untuk menjalankan function ketika component dirender. atau bahasa lainnya gini ngasih function yg dimana funtion tersebut dieksekusi pada saat component itu  dirender, maupun itu pertama kali atau pada saat ada perubahan state. selain itu kita juga bisa memantau satu state ketika state itu berubah, jadi kita bisa mantau satu state aja yg lain gak perlu dipantau tuh juga bisa.
+
+
+//untuk mengeksekusi sekali pada saat dirender kita bisa pakai empty array, maka function akan dieksekusi pada saat pertama kali render aja. 
+
+jadi untuk mengeksekusi function pada saat component itu dirender pertama kali aja, kita bisa kasih empty array
+
+di react ada kelas component yang namanya did mount dan did update.
+gunanya ya sama sih kek react.useEffect , reactEffect digunakan di functional,
+
+pertamakali render component ke dalam dom tree di react ada namanya yaitu mount
+
+kita bs kasih library carousel atau init library dalam function ese effect, knp didalam ? karena bisa ngedetect bahwa component itu dirender, jd kita mengeksekusi function ini. nah kalau naronya diluar use effect kita cm bs ngira2 udah dirender belum.
+
+ketika kita init library, maka kita perlu return function nya dengan destroy

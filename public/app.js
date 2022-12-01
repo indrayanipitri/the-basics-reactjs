@@ -131,22 +131,64 @@ selain itu bable dapat juga mentransformasi kode js yang engga standar seperti j
 // const element = <button onClick={clickDong.bind(this, "Maaciw Yawh")} >Click Me</button>
 
 //React State
+// const root = document.querySelector('#root');
+
+// function App() {
+//     // const state = React.useState(0);
+//     const [count, setCount] = React.useState(0);
+
+//     // const count = state[0];
+//     // const setCount = state[1];
+
+//     return (
+//         <>
+//             <button onClick={function() {
+//                 setCount(count - 1);
+//             }}> - </button>
+//             <span> {count} </span>
+//             <button onClick={function() {
+//                 setCount(count + 1);
+//             }}> + </button>
+//         </>
+//     )
+// }
+
+//Component Lifecycle
+// const root = document.querySelector('#root');
+
+// function App() {
+//     const [klik, setKlik] = React.useState(false);
+//     const [count, setCount] = React.useState(0);
+
+//     React.useEffect(function() {
+//         console.log(document.getElementById('judul'));
+//     }, []) //untuk mengeksekusi function pada saat component itu dirender pertama kali aja, kita bisa kasih empty array
+
+//     return (
+//         <>
+//            <h1 id="judul">Hai ini judul</h1>
+//            <button onClick={function(){
+//             setKlik(true)
+//            }}>klik aku dong</button>
+//            <button onClick={function(){
+//             setCount(count + 1);
+//            }}>tambahin nilai dong</button>
+//            <span> nilai saat ini : {count}</span>
+//         </>
+//     )
+// }
+
+//Conditional Rendering
 const root = document.querySelector('#root');
 function App() {
-  // const state = React.useState(0);
-  const [count, setCount] = React.useState(0);
-
-  // const count = state[0];
-  // const setCount = state[1];
-
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
+  const [login, setLogin] = React.useState(false);
+  if (login) {
+    return /*#__PURE__*/React.createElement("h1", null, "Udah login nih mba :D");
+  }
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Login dulu, mba!"), /*#__PURE__*/React.createElement("button", {
     onClick: function () {
-      setCount(count - 1);
+      setLogin(true);
     }
-  }, " - "), /*#__PURE__*/React.createElement("span", null, " ", count, " "), /*#__PURE__*/React.createElement("button", {
-    onClick: function () {
-      setCount(count + 1);
-    }
-  }, " + "));
+  }, "Login"));
 }
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);
