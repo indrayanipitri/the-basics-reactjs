@@ -179,16 +179,46 @@ selain itu bable dapat juga mentransformasi kode js yang engga standar seperti j
 // }
 
 //Conditional Rendering
+// const root = document.querySelector('#root');
+
+// function App() {
+//     const [login, setLogin] = React.useState(false);
+
+//     //pakai if
+//     // if (login) {
+//     //     return (
+//     //         <>
+//     //         <h1>Udah login nih mba :D</h1>
+//     //         <button onClick={function() {
+//     //         setLogin(false)
+//     //         }}>Logout</button>
+//     //         </>
+
+//     //     )
+//     // }
+
+//     return (
+//         <>
+//         <h1>
+//             //pengkondisian dalam jsx
+//             {login ? 'mba udah login' : 'mba belum login'}
+//         </h1>
+//         <button onClick={function() {
+//             setLogin(true)
+//         }}>Login</button>
+//         </>
+//     )      
+// }
+
+//Manipulasi DOM di React
 const root = document.querySelector('#root');
 function App() {
-  const [login, setLogin] = React.useState(false);
-  if (login) {
-    return /*#__PURE__*/React.createElement("h1", null, "Udah login nih mba :D");
-  }
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Login dulu, mba!"), /*#__PURE__*/React.createElement("button", {
-    onClick: function () {
-      setLogin(true);
-    }
-  }, "Login"));
+  const judulRef = React.useRef(null);
+  React.useEffect(function () {
+    console.log(judulRef.current.textContent = "App");
+  }, []);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", {
+    ref: judulRef
+  }, "Application"));
 }
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);

@@ -180,23 +180,53 @@
         // }
 
         //Conditional Rendering
+        // const root = document.querySelector('#root');
+
+        // function App() {
+        //     const [login, setLogin] = React.useState(false);
+
+        //     //pakai if
+        //     // if (login) {
+        //     //     return (
+        //     //         <>
+        //     //         <h1>Udah login nih mba :D</h1>
+        //     //         <button onClick={function() {
+        //     //         setLogin(false)
+        //     //         }}>Logout</button>
+        //     //         </>
+                
+        //     //     )
+        //     // }
+
+        //     return (
+        //         <>
+        //         <h1>
+        //             //pengkondisian dalam jsx
+        //             {login ? 'mba udah login' : 'mba belum login'}
+        //         </h1>
+        //         <button onClick={function() {
+        //             setLogin(true)
+        //         }}>Login</button>
+        //         </>
+        //     )      
+        // }
+
+
+        //Manipulasi DOM di React
         const root = document.querySelector('#root');
 
-        function App() {
-            const [login, setLogin] = React.useState(false);
+        function App () {
+            const judulRef = React.useRef(null);
 
-            if (login) {
-                return <h1>Udah login nih mba :D</h1>
-            }
+            React.useEffect( function() {
+                console.log(judulRef.current.textContent = "App")
+            }, []);
 
             return (
                 <>
-                <h1>Login dulu, mba!</h1>
-                <button onClick={function() {
-                    setLogin(true)
-                }}>Login</button>
+                <h1 ref={judulRef}>Application</h1>
                 </>
-            )      
+            )
         }
 
         ReactDOM.render(<App />, root)

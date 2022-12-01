@@ -76,3 +76,5 @@ pertamakali render component ke dalam dom tree di react ada namanya yaitu mount
 kita bs kasih library carousel atau init library dalam function ese effect, knp didalam ? karena bisa ngedetect bahwa component itu dirender, jd kita mengeksekusi function ini. nah kalau naronya diluar use effect kita cm bs ngira2 udah dirender belum.
 
 ketika kita init library, maka kita perlu return function nya dengan destroy
+
+bedanya useRef dan useState: useRef nilai berubah tp gak di render. kalau useState nilai berubah maka dirender
