@@ -247,15 +247,39 @@
         // }
 
         //Form
+        // const root = document.querySelector('#root');
+
+        // function App() {
+        //     const refNama = React.useRef(null)
+
+        //     function pasDiSubmit(event){
+        //         event.preventDefault()
+
+        //         const nama = refNama.current.value;
+        //         console.log("Nama : " + nama)
+        //     }
+
+        //     return (
+        //         <>
+        //         <form onSubmit={pasDiSubmit}>
+        //             <div>
+        //                 <label>Nama : </label>
+        //                 <input type="text" name="nama" ref={refNama} />
+        //             </div>
+        //                 <button type="submit">Kirim</button>
+        //         </form>
+        //         </>
+        //     )
+        // }
+
+        //Form Bagian 2
         const root = document.querySelector('#root');
 
         function App() {
-            const refNama = React.useRef(null)
+            const [nama, setNama] = React.useState('');
 
-            function pasDiSubmit(event){
-                event.preventDefault()
-
-                const nama = refNama.current.value;
+            function pasDiSubmit(event) {
+                event.preventDefault();
                 console.log("Nama : " + nama)
             }
 
@@ -264,12 +288,15 @@
                 <form onSubmit={pasDiSubmit}>
                     <div>
                         <label>Nama : </label>
-                        <input type="text" name="nama" ref={refNama} />
+                        <input type="text" name="nama" onChange={function(event) {
+                            setNama(event.target.value)
+                        }} />
                     </div>
-                        <button type="submit">Kirim</button>
+                    <button type="submit">Kirim</button>
                 </form>
                 </>
             )
         }
+
 
         ReactDOM.render(<App />, root)

@@ -245,12 +245,37 @@ selain itu bable dapat juga mentransformasi kode js yang engga standar seperti j
 // }
 
 //Form
+// const root = document.querySelector('#root');
+
+// function App() {
+//     const refNama = React.useRef(null)
+
+//     function pasDiSubmit(event){
+//         event.preventDefault()
+
+//         const nama = refNama.current.value;
+//         console.log("Nama : " + nama)
+//     }
+
+//     return (
+//         <>
+//         <form onSubmit={pasDiSubmit}>
+//             <div>
+//                 <label>Nama : </label>
+//                 <input type="text" name="nama" ref={refNama} />
+//             </div>
+//                 <button type="submit">Kirim</button>
+//         </form>
+//         </>
+//     )
+// }
+
+//Form Bagian 2
 const root = document.querySelector('#root');
 function App() {
-  const refNama = React.useRef(null);
+  const [nama, setNama] = React.useState('');
   function pasDiSubmit(event) {
     event.preventDefault();
-    const nama = refNama.current.value;
     console.log("Nama : " + nama);
   }
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("form", {
@@ -258,7 +283,9 @@ function App() {
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", null, "Nama : "), /*#__PURE__*/React.createElement("input", {
     type: "text",
     name: "nama",
-    ref: refNama
+    onChange: function (event) {
+      setNama(event.target.value);
+    }
   })), /*#__PURE__*/React.createElement("button", {
     type: "submit"
   }, "Kirim")));
