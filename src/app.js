@@ -213,18 +213,35 @@
 
 
         //Manipulasi DOM di React
+        // const root = document.querySelector('#root');
+
+        // function App () {
+        //     const judulRef = React.useRef(null);
+
+        //     React.useEffect( function() {
+        //         console.log(judulRef.current.textContent = "App")
+        //     }, []);
+
+        //     return (
+        //         <>
+        //         <h1 ref={judulRef}>Application</h1>
+        //         </>
+        //     )
+        // }
+
+        //List dan Key
         const root = document.querySelector('#root');
 
-        function App () {
-            const judulRef = React.useRef(null);
-
-            React.useEffect( function() {
-                console.log(judulRef.current.textContent = "App")
-            }, []);
+        function App() {
+            const fruits = ["Apple", "Orange", "Grape", "Mango"];
 
             return (
                 <>
-                <h1 ref={judulRef}>Application</h1>
+                <ul>
+                    {fruits.map(function(fruit) {
+                        return <li key={fruit}>{fruit}</li>
+                    })}
+                </ul>
                 </>
             )
         }

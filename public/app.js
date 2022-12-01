@@ -211,14 +211,30 @@ selain itu bable dapat juga mentransformasi kode js yang engga standar seperti j
 // }
 
 //Manipulasi DOM di React
+// const root = document.querySelector('#root');
+
+// function App () {
+//     const judulRef = React.useRef(null);
+
+//     React.useEffect( function() {
+//         console.log(judulRef.current.textContent = "App")
+//     }, []);
+
+//     return (
+//         <>
+//         <h1 ref={judulRef}>Application</h1>
+//         </>
+//     )
+// }
+
+//List dan Key
 const root = document.querySelector('#root');
 function App() {
-  const judulRef = React.useRef(null);
-  React.useEffect(function () {
-    console.log(judulRef.current.textContent = "App");
-  }, []);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", {
-    ref: judulRef
-  }, "Application"));
+  const fruits = ["Apple", "Orange", "Grape", "Mango"];
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("ul", null, fruits.map(function (fruit) {
+    return /*#__PURE__*/React.createElement("li", {
+      key: fruit
+    }, fruit);
+  })));
 }
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);
