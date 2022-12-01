@@ -230,18 +230,44 @@
         // }
 
         //List dan Key
+        // const root = document.querySelector('#root');
+
+        // function App() {
+        //     const fruits = ["Apple", "Orange", "Grape", "Mango"];
+
+        //     return (
+        //         <>
+        //         <ul>
+        //             {fruits.map(function(fruit) {
+        //                 return <li key={fruit}>{fruit}</li>
+        //             })}
+        //         </ul>
+        //         </>
+        //     )
+        // }
+
+        //Form
         const root = document.querySelector('#root');
 
         function App() {
-            const fruits = ["Apple", "Orange", "Grape", "Mango"];
+            const refNama = React.useRef(null)
+
+            function pasDiSubmit(event){
+                event.preventDefault()
+
+                const nama = refNama.current.value;
+                console.log("Nama : " + nama)
+            }
 
             return (
                 <>
-                <ul>
-                    {fruits.map(function(fruit) {
-                        return <li key={fruit}>{fruit}</li>
-                    })}
-                </ul>
+                <form onSubmit={pasDiSubmit}>
+                    <div>
+                        <label>Nama : </label>
+                        <input type="text" name="nama" ref={refNama} />
+                    </div>
+                        <button type="submit">Kirim</button>
+                </form>
                 </>
             )
         }

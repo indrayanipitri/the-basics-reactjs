@@ -3,7 +3,11 @@ body {
     color: azure;
 }
 
-button, span {
+button, span, label, input {
     font-weight: 700;
     font-size: 20px;
+}
+
+button{
+    margin-top: 20px;
 }

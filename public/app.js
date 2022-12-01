@@ -228,13 +228,39 @@ selain itu bable dapat juga mentransformasi kode js yang engga standar seperti j
 // }
 
 //List dan Key
+// const root = document.querySelector('#root');
+
+// function App() {
+//     const fruits = ["Apple", "Orange", "Grape", "Mango"];
+
+//     return (
+//         <>
+//         <ul>
+//             {fruits.map(function(fruit) {
+//                 return <li key={fruit}>{fruit}</li>
+//             })}
+//         </ul>
+//         </>
+//     )
+// }
+
+//Form
 const root = document.querySelector('#root');
 function App() {
-  const fruits = ["Apple", "Orange", "Grape", "Mango"];
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("ul", null, fruits.map(function (fruit) {
-    return /*#__PURE__*/React.createElement("li", {
-      key: fruit
-    }, fruit);
-  })));
+  const refNama = React.useRef(null);
+  function pasDiSubmit(event) {
+    event.preventDefault();
+    const nama = refNama.current.value;
+    console.log("Nama : " + nama);
+  }
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("form", {
+    onSubmit: pasDiSubmit
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", null, "Nama : "), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    name: "nama",
+    ref: refNama
+  })), /*#__PURE__*/React.createElement("button", {
+    type: "submit"
+  }, "Kirim")));
 }
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);
