@@ -313,23 +313,36 @@
             // }, []);
 
             //Cara 2
+
+            const [news, setNews] = React.useState([]);
+            const [loading, setLoading] = React.useState(true);
+
             React.useEffect(function() {
                 async function getData() {
                     const request = await fetch('https://api.spaceflightnewsapi.net/v3/blogs');
 
                     const response = await request.json();
                     
-                    console.log(response);
+                    setNews(response);
+                    setLoading(false)
                 }
                 getData();
             }, []);
 
             return (
                 <>
-                <h1>Fetch Data</h1>
+                <h2>Judul Berita</h2>
+                {loading ? (<i>Tunggu ya sist..</i>) : (
+                    <ul>
+                    {news.map(function(item) {
+                        return <li key={item.id}>
+                            <h3>{item.title}</h3>
+                            </li>
+                    })}
+                    </ul>
+                )}
                 </>
             )
         }
-
 
         ReactDOM.render(<App />, root)

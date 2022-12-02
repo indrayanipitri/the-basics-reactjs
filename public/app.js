@@ -309,14 +309,22 @@ function App() {
   // }, []);
 
   //Cara 2
+
+  const [news, setNews] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
   React.useEffect(function () {
     async function getData() {
       const request = await fetch('https://api.spaceflightnewsapi.net/v3/blogs');
       const response = await request.json();
-      console.log(response);
+      setNews(response);
+      setLoading(false);
     }
     getData();
   }, []);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Fetch Data"));
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Judul Berita"), loading ? /*#__PURE__*/React.createElement("i", null, "Tunggu ya sist..") : /*#__PURE__*/React.createElement("ul", null, news.map(function (item) {
+    return /*#__PURE__*/React.createElement("li", {
+      key: item.id
+    }, /*#__PURE__*/React.createElement("h3", null, item.title));
+  })));
 }
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);
