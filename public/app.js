@@ -271,23 +271,52 @@ selain itu bable dapat juga mentransformasi kode js yang engga standar seperti j
 // }
 
 //Form Bagian 2
+// const root = document.querySelector('#root');
+
+// function App() {
+//     const [nama, setNama] = React.useState('');
+
+//     function pasDiSubmit(event) {
+//         event.preventDefault();
+//         console.log("Nama : " + nama)
+//     }
+
+//     return (
+//         <>
+//         <form onSubmit={pasDiSubmit}>
+//             <div>
+//                 <label>Nama : </label>
+//                 <input type="text" name="nama" onChange={function(event) {
+//                     setNama(event.target.value)
+//                 }} />
+//             </div>
+//             <button type="submit">Kirim</button>
+//         </form>
+//         </>
+//     )
+// }
+
+//Fetch Data
 const root = document.querySelector('#root');
 function App() {
-  const [nama, setNama] = React.useState('');
-  function pasDiSubmit(event) {
-    event.preventDefault();
-    console.log("Nama : " + nama);
-  }
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("form", {
-    onSubmit: pasDiSubmit
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", null, "Nama : "), /*#__PURE__*/React.createElement("input", {
-    type: "text",
-    name: "nama",
-    onChange: function (event) {
-      setNama(event.target.value);
+  //Cara 1
+  // React.useEffect(function() {
+  //     const getData = fetch('https://api.spaceflightnewsapi.net/v3/blogs').then(function(response) {
+  //         return response.json();
+  //     }).then(function(response) {
+  //         console.log(response)
+  //     })
+  // }, []);
+
+  //Cara 2
+  React.useEffect(function () {
+    async function getData() {
+      const request = await fetch('https://api.spaceflightnewsapi.net/v3/blogs');
+      const response = await request.json();
+      console.log(response);
     }
-  })), /*#__PURE__*/React.createElement("button", {
-    type: "submit"
-  }, "Kirim")));
+    getData();
+  }, []);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Fetch Data"));
 }
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);

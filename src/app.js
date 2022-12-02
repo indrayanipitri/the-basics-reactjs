@@ -273,27 +273,60 @@
         // }
 
         //Form Bagian 2
+        // const root = document.querySelector('#root');
+
+        // function App() {
+        //     const [nama, setNama] = React.useState('');
+
+        //     function pasDiSubmit(event) {
+        //         event.preventDefault();
+        //         console.log("Nama : " + nama)
+        //     }
+
+        //     return (
+        //         <>
+        //         <form onSubmit={pasDiSubmit}>
+        //             <div>
+        //                 <label>Nama : </label>
+        //                 <input type="text" name="nama" onChange={function(event) {
+        //                     setNama(event.target.value)
+        //                 }} />
+        //             </div>
+        //             <button type="submit">Kirim</button>
+        //         </form>
+        //         </>
+        //     )
+        // }
+
+        //Fetch Data
         const root = document.querySelector('#root');
 
         function App() {
-            const [nama, setNama] = React.useState('');
 
-            function pasDiSubmit(event) {
-                event.preventDefault();
-                console.log("Nama : " + nama)
-            }
+            //Cara 1
+            // React.useEffect(function() {
+            //     const getData = fetch('https://api.spaceflightnewsapi.net/v3/blogs').then(function(response) {
+            //         return response.json();
+            //     }).then(function(response) {
+            //         console.log(response)
+            //     })
+            // }, []);
+
+            //Cara 2
+            React.useEffect(function() {
+                async function getData() {
+                    const request = await fetch('https://api.spaceflightnewsapi.net/v3/blogs');
+
+                    const response = await request.json();
+                    
+                    console.log(response);
+                }
+                getData();
+            }, []);
 
             return (
                 <>
-                <form onSubmit={pasDiSubmit}>
-                    <div>
-                        <label>Nama : </label>
-                        <input type="text" name="nama" onChange={function(event) {
-                            setNama(event.target.value)
-                        }} />
-                    </div>
-                    <button type="submit">Kirim</button>
-                </form>
+                <h1>Fetch Data</h1>
                 </>
             )
         }
