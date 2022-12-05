@@ -299,9 +299,9 @@
         // }
 
         //Fetch Data
-        const root = document.querySelector('#root');
+        // const root = document.querySelector('#root');
 
-        function App() {
+        // function App() {
 
             //Cara 1
             // React.useEffect(function() {
@@ -312,35 +312,159 @@
             //     })
             // }, []);
 
-            //Cara 2
+            //Cara 2 dan ui
+        //     const [news, setNews] = React.useState([]);
+        //     const [loading, setLoading] = React.useState(true);
 
-            const [news, setNews] = React.useState([]);
-            const [loading, setLoading] = React.useState(true);
+        //     React.useEffect(function() {
+        //         async function getData() {
+        //             const request = await fetch('https://api.spaceflightnewsapi.net/v3/blogs');
 
-            React.useEffect(function() {
-                async function getData() {
-                    const request = await fetch('https://api.spaceflightnewsapi.net/v3/blogs');
-
-                    const response = await request.json();
+        //             const response = await request.json();
                     
-                    setNews(response);
-                    setLoading(false)
+        //             setNews(response);
+        //             setLoading(false)
+        //         }
+        //         getData();
+        //     }, []);
+
+        //     return (
+        //         <>
+        //         <h2>Judul Berita</h2>
+        //         {loading ? (<i>Tunggu ya sist..</i>) : (
+        //             <ul>
+        //             {news.map(function(item) {
+        //                 return <li key={item.id}>
+        //                     <h3>{item.title}</h3>
+        //                     </li>
+        //             })}
+        //             </ul>
+        //         )}
+        //         </>
+        //     )
+        // }
+
+        //Todo List
+        const root = document.querySelector('#root');
+
+        function App() {
+            const [activity, setActivity] = React.useState('');
+            const [edit, setEdit] = React.useState({});
+            const [message, setMessage] = React.useState('');
+            const [todos, setTodos] = React.useState([]);
+
+            function generateId() {
+                return Date.now()
+            }
+
+            function saveTodoHandler(event) {
+                event.preventDefault();
+
+                if (!activity) {
+                    return setMessage('todo nya diisi dong')
                 }
-                getData();
-            }, []);
+
+                setMessage('')
+
+                if (edit.id) {
+                    const updatedTodo = {
+                        ... edit,
+                        activity
+                    }
+
+                    const editTodoIndex = todos.findIndex(function(todo) {
+                        return todo.id == edit.id;
+                    })
+
+                    const updatedTodos = [... todos]
+                    updatedTodos[editTodoIndex] = updatedTodo;
+
+                    setTodos(updatedTodos)
+
+                    return cancelEditHandler();
+                }
+                
+
+                setTodos([... todos, {
+                    id: generateId(),
+                    activity: activity,
+                    done: false
+                }]);
+                setActivity('');
+                
+            }
+
+            function removeTodoHandler(todoId){
+                const filteredTodos = todos.filter(function(todo) {
+                    return todo.id !== todoId
+                })
+                
+                setTodos(filteredTodos);
+
+                if (edit.id) cancelEditHandler();
+            }
+
+            function editTodoHandler(todo) {
+                setActivity(todo.activity)
+                setEdit(todo)
+            }
+
+            function cancelEditHandler(todo) {
+                setActivity('');
+                setEdit({});
+            }
+
+            function doneTodoHandler(todo){
+                const checkedTodo = {
+                    ... todo,
+                    done: todo.done ? false : true
+                }
+                const editTodoIndex = todos.findIndex(function(currentTodo) {
+                    return currentTodo.id == todo.id;
+                })
+
+                const updatedTodos = [... todos]
+                updatedTodos[editTodoIndex] = checkedTodo;
+
+                setTodos(updatedTodos)
+            }
 
             return (
                 <>
-                <h2>Judul Berita</h2>
-                {loading ? (<i>Tunggu ya sist..</i>) : (
-                    <ul>
-                    {news.map(function(item) {
-                        return <li key={item.id}>
-                            <h3>{item.title}</h3>
-                            </li>
+                <h1>Simple Todo List</h1>
+                {message && <h3 style = {{ color: 'red' }}>{message}</h3> }
+                
+                <form onSubmit = {saveTodoHandler}>
+                    <input type="text" 
+                    placeholder="hari ini kamu ngapain?" 
+                    value={activity}
+                    onChange={function(event) {
+                        setActivity(event.target.value)
+                    }}/>
+                    <button type="submit">
+                        {edit.id ? "Simpan Perubahan" : "Tambah"}</button>
+                    {edit.id && <button onClick={cancelEditHandler}>Batal Edit</button>}
+                    
+                </form>
+                {todos.length > 0 ? <ul>
+                    {todos.map(function(todo) {
+                        return <li key={todo.id}>
+                        <h2>
+                        <input type="checkbox" 
+                        checked={todo.done}
+                        onChange={doneTodoHandler.bind(this, todo)}
+                        style={{ marginRight:15 }} />
+                        {todo.activity} 
+                        <span style= {{ color : 'yellow', marginLeft : 10}}>({todo.done ? "selesai" : "belum selesai"})</span>
+                        <button onClick={editTodoHandler.bind(this, todo)}>edit</button>
+                        <button onClick={removeTodoHandler.bind(this, todo.id)}>hapus</button>
+                        </h2>
+                        </li>
                     })}
-                    </ul>
-                )}
+                    
+                </ul> :
+                <h2> belum ada todo nih</h2>}
+               
                 </>
             )
         }
