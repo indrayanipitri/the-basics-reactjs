@@ -86,3 +86,6 @@ yarn build
 
 jalanin di serve node =
 npx serve -s build
+
+yarn add react-router-dom@6 history@5
+langsung masuk ke index.js masukin <BrowserRouter>
