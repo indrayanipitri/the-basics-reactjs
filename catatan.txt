@@ -80,3 +80,9 @@ ketika kita init library, maka kita perlu return function nya dengan destroy
 bedanya useRef dan useState: useRef nilai berubah tp gak di render. kalau useState nilai berubah maka dirender
 
 ... -> spread operator
+
+production =
+yarn build
+
+jalanin di serve node =
+npx serve -s build
